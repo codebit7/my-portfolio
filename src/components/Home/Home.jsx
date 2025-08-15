@@ -15,8 +15,7 @@ const Home = () => {
           <div className="underline"></div>
           <h2 className="profession">Software Engineer</h2>
           <p className="description">
-            The namics of how users interact with interactive elements within a
-            user interface flow chart based on container proportion.
+            I build modern, scalable, and user-friendly web applications with a strong focus on backend development and clean, efficient code. Passionate about creating solutions that blend performance, functionality, and design
           </p>
           <div className="btns">
           <button className="contact-btn">Contact Me</button>

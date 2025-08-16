@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import './Navbar.css'; 
 
 const Navbar = () => {
-  const [activeLink, setActiveLink] = useState('HOME');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navLinks = [
     { name: 'HOME', href: '#home' },
@@ -11,9 +11,25 @@ const Navbar = () => {
     { name: 'SERVICES', href: '#services' },
     { name: 'EXPERIENCE', href: '#experience' },
     { name: 'PROJECTS', href: '#projects' },
-    
     { name: 'CONTACT', href: '#contact' }
   ];
+
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-in-out',
+    });
+  }, []);
+  const [activeLink, setActiveLink] = useState('HOME');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+
+
+
+
+  
 
   const handleLinkClick = (linkName) => {
     setActiveLink(linkName);
@@ -29,15 +45,15 @@ const Navbar = () => {
     
       <nav className="navbar container">
         <div className="navbar-container">
-          {/* Logo */}
-          <div className="navbar-logo">
+         
+          <div className="navbar-logo" data-aos="fade-right" data-aos-delay="100">
             <h2>Portfolio</h2>
           </div>
 
-          {/* Desktop Navigation Links */}
+         
           <ul className="navbar-menu">
-            {navLinks.map((link) => (
-              <li key={link.name} className="navbar-item">
+            {navLinks.map((link, idx) => (
+              <li key={link.name} className="navbar-item" data-aos="fade-down" data-aos-delay={200 + idx * 100}>
                 <a
                   href={link.href}
                   className={`navbar-link ${activeLink === link.name ? 'active' : ''}`}
@@ -49,17 +65,17 @@ const Navbar = () => {
             ))}
           </ul>
 
-          {/* Mobile Menu Toggle */}
+          
           <div className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`} onClick={toggleMobileMenu}>
             <span className="hamburger"></span>
             <span className="hamburger"></span>
             <span className="hamburger"></span>
           </div>
 
-          {/* Mobile Navigation Menu */}
-          <ul className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
-            {navLinks.map((link) => (
-              <li key={link.name} className="mobile-menu-item">
+         
+          <ul className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}> 
+            {navLinks.map((link, idx) => (
+              <li key={link.name} className="mobile-menu-item" data-aos="fade-up" data-aos-delay={200 + idx * 100}>
                 <a
                   href={link.href}
                   className={`mobile-menu-link ${activeLink === link.name ? 'active' : ''}`}

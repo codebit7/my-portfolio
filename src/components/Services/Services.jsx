@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Services.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Services = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-in-out',
+    });
+  }, []);
   const servicesData = [
     {
       id: 1,
@@ -78,10 +87,12 @@ const Services = () => {
           </div>
           
           <div className="services-grid">
-            {servicesData.map((service) => (
-              <div 
-                key={service.id} 
+            {servicesData.map((service, idx) => (
+              <div
+                key={service.id}
                 className={`service-card ${service.featured ? 'featured' : ''}`}
+                data-aos="fade-up"
+                data-aos-delay={idx * 100}
               >
                 <div className="service-icon">
                   {service.icon}

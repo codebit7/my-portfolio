@@ -21,7 +21,27 @@ const Navbar = () => {
       once: true,
       easing: 'ease-in-out',
     });
-  }, []);
+
+    // Intersection Observer for active nav link on scroll
+    const handleScrollActive = () => {
+      const sections = navLinks.map(link => document.querySelector(link.href));
+      let found = false;
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 80 && rect.bottom > 80) {
+            setActiveLink(navLinks[i].name);
+            found = true;
+            break;
+          }
+        }
+      }
+      if (!found) setActiveLink(navLinks[0].name);
+    };
+    window.addEventListener('scroll', handleScrollActive);
+    return () => window.removeEventListener('scroll', handleScrollActive);
+  }, [navLinks]);
   const [activeLink, setActiveLink] = useState('HOME');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -34,6 +54,13 @@ const Navbar = () => {
   const handleLinkClick = (linkName) => {
     setActiveLink(linkName);
     setIsMobileMenuOpen(false);
+    const linkObj = navLinks.find(l => l.name === linkName);
+    if (linkObj) {
+      const section = document.querySelector(linkObj.href);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   };
 
   const toggleMobileMenu = () => {

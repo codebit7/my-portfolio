@@ -39,6 +39,8 @@ const Home = () => {
         link.href = '/resume/Wamiq_Rahim_Resume.pdf';
         link.download = 'Wamiq_Rahim_Resume.pdf';
         document.body.appendChild(link);
+
+        
         link.click();
         document.body.removeChild(link);
         

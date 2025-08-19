@@ -5,6 +5,8 @@ export const fetchExperience = async () => {
   try {
     const experienceRef = ref(database, 'portfolio/experience');
     const snapshot = await get(experienceRef);
+
+    
     if (snapshot.exists()) {
       return Object.values(snapshot.val());
     }

@@ -35,8 +35,7 @@ I’m always curious, always learning whether it’s optimizing a database query
             <span className="tag" data-aos="zoom-in" data-aos-delay="300">Visual Studio Code</span>
             <span className="tag" data-aos="zoom-in" data-aos-delay="350">Android Studio</span>
             <span className="tag" data-aos="zoom-in" data-aos-delay="400">AWS Console</span>
-            {/* <span className="tag">Figma</span>
-            <span className="tag">Sketch</span> */}
+           
           </div>
         </div>
 

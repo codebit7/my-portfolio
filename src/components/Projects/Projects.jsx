@@ -9,7 +9,7 @@ const Projects = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    AOS.init({ duration: 1200, once: true, easing: 'ease-in-out' });
+    AOS.init({ duration: 1000, once: true, easing: 'ease-in-out' });
 
     const loadData = async () => {
       const data = await fetchProjects();

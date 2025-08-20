@@ -10,6 +10,7 @@ html {
   overflow-x: hidden;
 }
 
+
 body {
   margin-top: 70px;
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -24,7 +25,7 @@ body {
   top: 0;
   width: 100%;
   z-index: 1000;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 20px #0000004d;
   backdrop-filter: blur(10px);
 }
 
@@ -88,6 +89,7 @@ body {
   position: absolute;
   bottom: -2px;
   left: 50%;
+
   transform: translateX(-50%);
   width: 80%;
   height: 2px;
@@ -95,6 +97,8 @@ body {
   border-radius: 2px;
   transition: width 0.5s ease-in-out;
 }
+
+
 
 .mobile-menu-toggle {
   display: none;
@@ -106,7 +110,7 @@ body {
 }
 
 .mobile-menu-toggle:hover {
-  background: rgba(100, 255, 218, 0.1);
+  background: #64ffda1a;
 }
 
 .hamburger {

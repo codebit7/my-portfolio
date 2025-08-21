@@ -1,56 +1,50 @@
-
-.experience-section{
-         background: #1a2332;
-          padding: 100px 0;
-          min-height: 100vh;
-          position: relative;
-
+.experience-section {
+  background: #1a2332;
+  padding: 100px 0;
+  min-height: 100vh;
+  position: relative;
 }
+
 .experience-container {
-         max-width: 1000px;
-          margin: 0 auto;
-          padding: 0 2rem;
-  
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
+.experience-title-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
 
-       .experience-title-header {
+.experience-title {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
 
-          
-          text-align: center;
-          margin-bottom: 30px;
-        }
+.experience-title::before,
+.experience-title::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 2px;
+  background: #ff4444;
+}
 
-        .experience-title {
-      
-          color: #ffffff;
-          font-size: 2.5rem;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          position: relative;
-          display: inline-block;
-        }
+.experience-title::before {
+  left: -70px;
+}
 
-        .experience-title::before,
-        .experience-title::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          width: 60px;
-          height: 2px;
-          background: #ff4444;
-        }
+.experience-title::after {
+  right: -70px;
+}
 
-        .experience-title::before {
-          left: -70px;
-        }
-
-        .experience-title::after {
-          right: -70px;
-        }
-
-    .experience-bg-text {
+.experience-bg-text {
   position: absolute;
   top: -20%;
   left: 0;
@@ -61,25 +55,23 @@
   color: transparent;
   -webkit-text-stroke: 2px #ffffff09;
   z-index: 0;
-  pointer-events: none; /* so it doesn't block clicks */
+  pointer-events: none; 
 }
 
-
 .experience-card {
-  
   border-radius: 15px;
   padding: 30px;
   margin-bottom: 30px;
- 
-  
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
 }
-
-
 
 .experience-card:hover {
   border: 1px solid #ff4444;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 68, 68, 0.1);
 }
 
 .experience-header {
@@ -148,7 +140,6 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
 .projects-key-title {
   color: #ffffff;
   font-size: 1.5rem;
@@ -156,17 +147,17 @@
   margin-bottom: 10px;
   position: relative;
   opacity: 0.9;
-  
+  display: flex;
+  align-items: center;
 }
-.projects-key-title::before{
+
+.projects-key-title::before {
   content: '';
-  display: block;
+  display: inline-block;
   width: 2px;
   height: 20px;
   background: #ff4444;
-  margin-right: 5px;
-  
-  display: inline-block;
+  margin-right: 8px;
 }
 
 .project-tags {
@@ -182,32 +173,228 @@
   border-radius: 15px;
   font-size: 0.9rem;
   border: 1px solid rgba(139, 92, 246, 0.3);
+  transition: all 0.3s ease;
 }
 
+.project-tag:hover {
+  background: #2a3441;
+  transform: translateY(-2px);
+}
 
+/* Tablet Responsive */
+@media (max-width: 1024px) {
+  .experience-section {
+    padding: 80px 0;
+  }
+  
+  .experience-container {
+    padding: 0 1.5rem;
+  }
+  
+  .experience-bg-text {
+    font-size: 100px;
+  }
+  
+  .experience-title {
+    font-size: 2.2rem;
+  }
+  
+  .experience-title::before,
+  .experience-title::after {
+    width: 40px;
+  }
+  
+  .experience-title::before {
+    left: -50px;
+  }
+  
+  .experience-title::after {
+    right: -50px;
+  }
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
+  .experience-section {
+    padding: 60px 0;
+  }
+  
+  .experience-container {
+    padding: 0 1rem;
+  }
+  
+  .experience-bg-text {
+    font-size: 60px;
+    top: -10%;
+  }
+  
+  .experience-title-header {
+    margin-bottom: 40px;
+  }
+  
+  .experience-title {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  
+  /* Hide decorative lines on mobile */
+  .experience-title::before,
+  .experience-title::after {
+    display: none;
+  }
+  
+  .experience-card {
+    padding: 25px 20px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+  }
+  
   .experience-header {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    align-items: flex-start;
   }
   
   .company-name {
     font-size: 1.5rem;
+    line-height: 1.3;
   }
   
   .date-range {
     align-self: flex-start;
+    font-size: 0.9rem;
+    padding: 6px 14px;
   }
   
-  .section-title {
-    font-size: 2rem;
+  .position {
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+  }
+  
+  .description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  
+  .description li {
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .description li::before {
+    font-size: 1rem;
+  }
+  
+  .projects-key-title {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+  
+  .projects-key-title::before {
+    height: 16px;
+    margin-right: 6px;
+  }
+  
+  .project-tags {
+    gap: 8px;
+  }
+  
+  .project-tag {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+  }
+}
+
+/* Small Mobile Responsive */
+@media (max-width: 480px) {
+  .experience-section {
+    padding: 40px 0;
   }
   
   .experience-container {
-    padding: 20px 10px;
+    padding: 0 0.75rem;
+  }
+  
+  .experience-bg-text {
+    font-size: 45px;
+    top: -8%;
+  }
+  
+  .experience-title {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
   }
   
   .experience-card {
-    padding: 20px;
+    padding: 20px 15px;
+    margin-bottom: 20px;
+  }
+  
+  .company-name {
+    font-size: 1.3rem;
+  }
+  
+  .date-range {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+  }
+  
+  .position {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+  }
+  
+  .description li {
+    padding-left: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .projects-key-title {
+    font-size: 1.1rem;
+  }
+  
+  .project-tag {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+  
+  .projects-highlight {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 320px) {
+  .experience-container {
+    padding: 0 0.5rem;
+  }
+  
+  .experience-bg-text {
+    font-size: 35px;
+  }
+  
+  .experience-title {
+    font-size: 1.3rem;
+  }
+  
+  .experience-card {
+    padding: 15px 12px;
+  }
+  
+  .company-name {
+    font-size: 1.2rem;
+  }
+  
+  .position {
+    font-size: 0.95rem;
+  }
+  
+  .description {
+    font-size: 0.85rem;
   }
 }

@@ -216,7 +216,7 @@ body {
 @media screen and (max-width: 480px) {
   .navbar-container {
     padding: 0 0.5rem;
-    height: 60px;
+    height: 70px;
   }
   .navbar-logo h2 {
     font-size: 1.5rem;

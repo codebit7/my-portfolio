@@ -273,6 +273,12 @@
           .contact-title {
             font-size: 1.5rem;
           }
+           .contact-bg-text {
+    font-size: 60px;
+    top: -60px;
+    
+    -webkit-text-stroke: 1px #ffffff09;
+  }
 
           .contact-title::before,
           .contact-title::after {

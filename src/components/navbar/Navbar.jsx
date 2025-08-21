@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './Navbar.css'; 
@@ -15,6 +15,8 @@ const Navbar = () => {
   ];
 
 
+  const scrollActiveAllowed = useRef(true);
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -24,6 +26,7 @@ const Navbar = () => {
 
     // Intersection Observer for active nav link on scroll
     const handleScrollActive = () => {
+      if (!scrollActiveAllowed.current) return;
       const sections = navLinks.map(link => document.querySelector(link.href));
       let found = false;
       for (let i = 0; i < sections.length; i++) {
@@ -54,12 +57,21 @@ const Navbar = () => {
   const handleLinkClick = (linkName) => {
     setActiveLink(linkName);
     setIsMobileMenuOpen(false);
+    scrollActiveAllowed.current = false;
     const linkObj = navLinks.find(l => l.name === linkName);
     if (linkObj) {
       const section = document.querySelector(linkObj.href);
       if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        
+        setTimeout(() => {
+          scrollActiveAllowed.current = true;
+        }, 700); 
+      } else {
+        scrollActiveAllowed.current = true;
       }
+    } else {
+      scrollActiveAllowed.current = true;
     }
   };
 

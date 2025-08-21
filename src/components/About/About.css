@@ -8,7 +8,7 @@
 
 .about-container {
   width: 60%;
-  margin: 20px 30px ;
+  margin: 20px 30px;
   position: relative;
 }
 
@@ -19,7 +19,6 @@
   transform: translateX(-50%);
   font-size: 120px;
   font-weight: bold;
-   font-weight: bold;
   color: transparent;               
   -webkit-text-stroke: 2px #ffffff09; 
   text-align: center;
@@ -87,4 +86,134 @@
   font-size: 14px;
   font-weight: bold;
   margin-right: 10px;
+}
+
+/* Tablet Responsive */
+@media screen and (max-width: 1024px) {
+  .about-section {
+    padding: 80px 0;
+  }
+  
+  .about-container {
+    width: 80%;
+    margin: 20px auto;
+  }
+  
+  .about-bg-text {
+    font-size: 100px;
+  }
+  
+  .work-process {
+    gap: 30px;
+  }
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+  .about-section {
+    padding: 60px 0;
+  }
+  
+  .about-container {
+    width: 90%;
+    margin: 15px auto;
+  }
+  
+  .about-bg-text {
+    font-size: 60px;
+    top: 10px;
+  }
+  
+  .about-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  
+  .about-description {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .tag {
+    padding: 5px 12px;
+    font-size: 13px;
+  }
+  
+  .work-process {
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 15px;
+  }
+  
+  .process-step {
+    font-size: 13px;
+  }
+  
+  .step-number {
+    width: 35px;
+    height: 35px;
+    font-size: 13px;
+  }
+}
+
+/* Small Mobile Responsive */
+@media screen and (max-width: 480px) {
+  .about-section {
+    padding: 40px 0;
+  }
+  
+  .about-container {
+    width: 95%;
+    margin: 10px auto;
+  }
+  
+  .about-bg-text {
+    font-size: 40px;
+    top: 5px;
+    -webkit-text-stroke: 1px #ffffff09;
+  }
+  
+  .about-block {
+    margin-bottom: 30px;
+  }
+  
+  .about-title {
+    font-size: 16px;
+    margin-bottom: 6px;
+    border-left-width: 2px;
+    padding-left: 6px;
+  }
+  
+  .about-description {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+  
+  .tag-list {
+    gap: 8px;
+  }
+  
+  .tag {
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 15px;
+  }
+  
+  .work-process {
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .process-step {
+    font-size: 12px;
+  }
+  
+  .step-number {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    margin-right: 8px;
+  }
 }

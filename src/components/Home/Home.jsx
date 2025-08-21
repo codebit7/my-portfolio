@@ -14,7 +14,7 @@ const Home = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
 
-  const CLOUDINARY_RESUME_URL = 'https://res.cloudinary.com//raw/upload/v000000/My-Resume.pdf';
+  const CLOUDINARY_RESUME_URL = 'https://res.cloudinary.com/dihsjyfek/raw/upload/v1724222333/My-Resume_rejcxc.pdf';
 
   const typingTexts = [
     "Software Engineer",
@@ -56,28 +56,11 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, currentTypeIndex, typingTexts]);
 
-  const handleContactMe = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      const offsetTop = contactSection.offsetTop - 70;
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      });
-    } 
-  };
-
-  const showToast = (message, type = 'success', duration = 5000) => {
-    setToast({ visible: true, message, type });
-    setTimeout(() => setToast({ visible: false, message: '', type }), duration);
-  };
+  
 
   const handleDownloadResume = async () => {
     try {
       setIsDownloading(true);
-      showToast('Starting download...', 'info', 2000);
-      
-    
       const response = await fetch(CLOUDINARY_RESUME_URL);
       
       if (!response.ok) {
@@ -85,12 +68,7 @@ const Home = () => {
       }
       
       const blob = await response.blob();
-      
-     
-      if (blob.type !== 'application/pdf' && !blob.type.includes('pdf')) {
-        throw new Error('Downloaded file is not a valid PDF');
-      }
-      
+    
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
@@ -103,24 +81,8 @@ const Home = () => {
       
      
       window.URL.revokeObjectURL(url);
-      
-      showToast('✅ Resume downloaded successfully!', 'success', 3500);
     } catch (error) {
-      console.error('Error downloading resume:', error);
       
-      let errorMessage = 'Failed to download resume. ';
-      
-      if (error.message.includes('404')) {
-        errorMessage += 'Resume file not found. Please check the Cloudinary URL.';
-      } else if (error.message.includes('Failed to fetch')) {
-        errorMessage += 'Network error. Please check your internet connection.';
-      } else if (error.message.includes('not a valid PDF')) {
-        errorMessage += 'The downloaded file is corrupted or not a PDF.';
-      } else {
-        errorMessage += 'Please try again or contact support.';
-      }
-      
-      showToast(`❌ ${errorMessage}`, 'error', 6000);
     } finally {
       setIsDownloading(false);
     }
@@ -128,14 +90,6 @@ const Home = () => {
 
   return (
     <section className="hero-section" id="home">
-      {toast.visible && (
-        <div className={`custom-toast ${toast.type}`} role="status" aria-live="polite">
-          <div className="toast-content">
-            <span className="toast-message">{toast.message}</span>
-          </div>
-        </div>
-      )}
-      
       <div className="hero-left">
         <div className="hero-content">
           <p className="intro-text" data-aos="fade-right" data-aos-delay="100">
@@ -156,7 +110,7 @@ const Home = () => {
               className="contact-btn" 
               data-aos="flip-left" 
               data-aos-delay="600"
-              onClick={handleContactMe}
+              
             >
               Contact Me
             </button>

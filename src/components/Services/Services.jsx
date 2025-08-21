@@ -18,23 +18,33 @@ const Services = () => {
   }, []);
 
   return (
-    <section className="services-section" id='services'>
-      <div className="services-container">
-        <h1 className="services-bg-text">SERVICES</h1>
-        <div className="services-header">
-          <h2 className="services-title">MY Services</h2>
+<section className="services-section" id='services'>
+  <div className="services-container">
+    <h1 className="services-bg-text">SERVICES</h1>
+    <div className="services-header">
+      <h2 className="services-title">MY Services</h2>
+    </div>
+    
+    <div className="services-grid">
+      {services.map((service, idx) => (
+        <div
+          key={idx}
+          className={`service-card ${service.featured ? 'featured' : ''}`}
+          data-aos="fade-up"
+          data-aos-delay={idx * 100}
+        >
+          <div className="service-icon">
+            {service.icon && (
+              <div dangerouslySetInnerHTML={{ __html: service.icon }} />
+            )}
+          </div>
+          <h3 className="service-title">{service.title}</h3>
+          <p className="service-description">{service.description}</p>
         </div>
-        
-        <div className="services-grid">
-          {services.map((service, idx) => (
-            <div key={idx} className="service-card" data-aos="fade-up" data-aos-delay={idx * 100}>
-              <h3 className="service-title">{service.title}</h3>
-              <p className="service-description">{service.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+      ))}
+    </div>
+  </div>
+</section>
   );
 };
 

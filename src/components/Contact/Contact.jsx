@@ -26,7 +26,7 @@ const Contact = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showLoading, setShowLoading] = useState(false);
+ 
  
 
   const handleInputChange = (e) => {
@@ -51,7 +51,7 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
-    setShowLoading(true);
+    
     try {
       const templateParams = {
         from_name: formData.name,
@@ -77,7 +77,7 @@ const Contact = () => {
   setFormData({ name: '', email: '', subject: '', message: '' });
     } finally {
       setIsSubmitting(false);
-      setShowLoading(false);
+      
     }
   };
 

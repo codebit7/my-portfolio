@@ -181,7 +181,7 @@
   transform: translateY(-2px);
 }
 
-/* Tablet Responsive */
+
 @media (max-width: 1024px) {
   .experience-section {
     padding: 80px 0;
@@ -213,7 +213,7 @@
   }
 }
 
-/* Mobile Responsive */
+
 @media (max-width: 768px) {
   .experience-section {
     padding: 60px 0;
@@ -237,7 +237,7 @@
     letter-spacing: 1px;
   }
   
-  /* Hide decorative lines on mobile */
+  
   .experience-title::before,
   .experience-title::after {
     display: none;
@@ -305,7 +305,7 @@
   }
 }
 
-/* Small Mobile Responsive */
+
 @media (max-width: 480px) {
   .experience-section {
     padding: 40px 0;
@@ -368,7 +368,7 @@
   }
 }
 
-/* Extra Small Mobile */
+
 @media (max-width: 320px) {
   .experience-container {
     padding: 0 0.5rem;

@@ -36,10 +36,13 @@ const Projects = () => {
                     <a href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="project-btn source-btn">
                       Source Code
                     </a>
-                    <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="project-btn demo-btn">
+                    {
+                      project.liveDemo && (<a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="project-btn demo-btn">
                       <FaArrowUpRightFromSquare className="demo-icon" />
                       Live Demo
-                    </a>
+                    </a>)
+                    }
+                    
                   </div>
                 </div>
               </div>

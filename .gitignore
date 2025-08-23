@@ -1,5 +1,4 @@
-# Ignore Firebase config
-src/services/FirebaseConfig.js
+
 # Logs
 logs
 *.log

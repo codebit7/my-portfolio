@@ -218,14 +218,14 @@
 }
 
 .project-description {
-  color: #ffffff;
-  font-size: 1rem;
+  color: #979797;
+  font-size: 0.9rem;
   line-height: 1.6;
   opacity: 0.9;
   flex: 1;
 }
 
-/* Tablet Responsive */
+
 @media (max-width: 1024px) {
   .projects-section {
     padding: 80px 0;
@@ -262,7 +262,7 @@
   }
 }
 
-/* Mobile Responsive */
+
 @media (max-width: 768px) {
   .projects-section {
     padding: 60px 0;
@@ -286,7 +286,7 @@
     letter-spacing: 1px;
   }
   
-  /* Hide decorative lines on mobile */
+
   .projects-title::before,
   .projects-title::after {
     display: none;
@@ -358,7 +358,7 @@
   }
 }
 
-/* Small Mobile Responsive */
+
 @media (max-width: 480px) {
   .projects-section {
     padding: 80px 0;

@@ -74,6 +74,8 @@
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   position: relative;
+  min-height: 290px;
+  
 }
 
 .service-card.featured {
@@ -102,6 +104,7 @@
   position: relative;
   z-index: 2;
   transition: transform 0.3s ease;
+
 }
 
 .service-icon svg {
@@ -115,6 +118,7 @@
   font-weight: 600;
   margin-bottom: 20px;
   text-transform: capitalize;
+  
 }
 
 .service-description {
@@ -122,6 +126,8 @@
   font-size: 0.95rem;
   line-height: 1.6;
   margin: 0;
+  flex-grow: 1;
+  
 }
 
 @media screen and (max-width: 1024px) {
@@ -145,6 +151,10 @@
   .services-grid {
     row-gap: 40px;
     column-gap: 25px;
+  }
+
+  .service-card {
+    min-height: 290px;
   }
 }
 
@@ -193,6 +203,7 @@
   .service-card {
     padding: 40px 25px 30px;
     border-radius: 15px;
+    min-height: 280px;
   }
   
   .service-icon {
@@ -222,11 +233,8 @@
     padding: 40px 0;
   }
   
-
-  
   .services-container {
     padding: 0 0.8rem;
-
   }
   
   .services-bg-text {
@@ -249,7 +257,6 @@
   }
   
   .services-grid {
-    
     gap: 40px;
     width: 85%;
     margin: 0 auto;
@@ -258,6 +265,7 @@
   .service-card {
     padding: 35px 20px 25px;
     border-radius: 12px;
+    min-height: 220px;
   }
 
   .service-icon {
@@ -301,6 +309,7 @@
   
   .service-card {
     padding: 30px 15px 20px;
+    min-height: 200px;
   }
   
   .service-icon {

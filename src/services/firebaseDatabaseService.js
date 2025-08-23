@@ -1,6 +1,22 @@
 import { ref, get } from 'firebase/database';
 import { database } from './FirebaseConfig';
 
+
+
+export const fetchAbout = async () => {
+  try {
+    const servicesRef = ref(database, 'portfolio/about');
+    const snapshot = await get(servicesRef);
+    if (snapshot.exists()) {
+      return Object.values(snapshot.val());
+    }
+    return [];
+  } catch (error) {
+    console.error('Error fetching services:', error);
+    throw error;
+  }
+};
+
 export const fetchExperience = async () => {
   try {
     const experienceRef = ref(database, 'portfolio/experience');

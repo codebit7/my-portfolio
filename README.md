@@ -2,17 +2,12 @@
 
 <div align="center">
 
-![Portfolio Banner](https://via.placeholder.com/800x400/041826/FFFFFF?text=Wamiq+Rahim+Portfolio)
-
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)](https://firebase.google.com/)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/Overview.en.html)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 **A modern, responsive portfolio website built with React and Firebase**
-
-[🚀 Live Demo](#) | [📖 Documentation](#features) | [🐛 Report Bug](#contributing)
-
 </div>
 
 ---
@@ -254,10 +249,10 @@ portfolio/
    {
      "portfolio": {
        "about": {
-         "0": { "paragraphs": ["...", "..."] },
-         "1": { "title": "Technologies", "items": ["React", "Node.js", "..."] },
-         "2": { "title": "Tools & Software", "items": ["VS Code", "Git", "..."] },
-         "3": { "title": "My Process", "steps": ["Planning", "Development", "..."] }
+         "aboutMe": { "paragraphs": ["...", "..."] },
+         "Technologies": { "title": "Technologies", "items": ["React", "Node.js", "..."] },
+         "Tools": { "title": "Tools & Software", "items": ["VS Code", "Git", "..."] },
+         "WorkProcess": { "title": "My Process", "steps": ["Planning", "Development", "..."] }
        },
        "experience": [
          {
@@ -314,46 +309,6 @@ The portfolio is built with a **mobile-first** approach and includes:
 - Optimized images
 - Collapsible navigation
 
----
-
-## 🌐 Deployment
-
-### Netlify (Recommended)
-
-1. **Build the project**
-   ```bash
-   npm run build
-   ```
-
-2. **Deploy to Netlify**
-   - Connect your GitHub repository
-   - Set build command: `npm run build`
-   - Set publish directory: `dist`
-   - Add environment variables
-
-### Vercel
-
-1. **Install Vercel CLI**
-   ```bash
-   npm i -g vercel
-   ```
-
-2. **Deploy**
-   ```bash
-   vercel --prod
-   ```
-
-### Manual Deployment
-
-1. **Build the project**
-   ```bash
-   npm run build
-   ```
-
-2. **Upload the `dist` folder** to your hosting provider
-
----
-
 ## 🤝 Contributing
 
 We welcome contributions! Please follow these steps:
@@ -373,22 +328,6 @@ We welcome contributions! Please follow these steps:
    ```
 5. **Open a Pull Request**
 
-### Development Guidelines
-
-- Follow React best practices
-- Maintain responsive design principles
-- Write clean, commented code
-- Test on multiple devices
-- Update documentation as needed
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
-
----
-
 ## 👤 Contact
 
 **Wamiq Rahim**
@@ -397,7 +336,6 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 - 📱 Phone: +923030170314
 - 🔗 LinkedIn: [linkedin.com/in/wamiq-rahim-05a83222b](https://www.linkedin.com/in/wamiq-rahim-05a83222b)
 - 🐱 GitHub: [github.com/codebit7](https://github.com/codebit7)
-- 🌐 Portfolio: [Your Live Portfolio URL]
 
 ---
 

@@ -15,7 +15,7 @@ const Home = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
  
-  const url = "https://drive.google.com/uc?export=download&id=1HLWkUsoWZTCbh08fhDzSqQd3cRh_9mME";
+  const url = "https://drive.google.com/file/d/1jXk3j1ipOiQvW6fiS2C_HEUrXLhsmiFM/view?usp=sharing";
 
   const typingTexts = [
     "Software Engineer",

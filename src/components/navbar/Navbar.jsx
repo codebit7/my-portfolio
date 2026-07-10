@@ -24,7 +24,6 @@ const Navbar = () => {
       easing: 'ease-in-out',
     });
 
-    // Intersection Observer for active nav link on scroll
     const handleScrollActive = () => {
       if (!scrollActiveAllowed.current) return;
       const sections = navLinks.map(link => document.querySelector(link.href));

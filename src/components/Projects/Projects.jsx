@@ -7,6 +7,7 @@ import { fetchProjects } from '../../services/firebaseDatabaseService';
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
+  const [expanded, setExpanded] = useState({});
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true, easing: 'ease-in-out' });
@@ -18,6 +19,10 @@ const Projects = () => {
     loadData();
   }, []);
 
+  const toggleExpand = (idx) => {
+    setExpanded(prev => ({ ...prev, [idx]: !prev[idx] }));
+  };
+
   return (
     <section className="projects-section" id='projects'>
       <div className="projects-container">
@@ -28,7 +33,7 @@ const Projects = () => {
       
         <div className="projects-grid">
           {projects.map((project, idx) => (
-            <div key={idx} className="project-card" data-aos="fade-up" data-aos-delay={idx * 200}>
+            <div key={idx} className={`project-card ${expanded[idx] ? 'expanded' : ''}`} data-aos="fade-up" data-aos-delay={idx * 200}>
               <div className="project-image-container">
                 <img src={project.image} alt={project.title} className="project-image" />
                 <div className="project-overlay">
@@ -48,7 +53,8 @@ const Projects = () => {
               </div>
               <div className="project-content">
                 <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
+                <p className={`project-description ${expanded[idx] ? 'expanded' : ''}`}>{project.description}</p>
+                <button type="button" className="see-more-btn" onClick={() => toggleExpand(idx)}>{expanded[idx] ? 'Show less' : 'See more'}</button>
               </div>
             </div>
           ))}

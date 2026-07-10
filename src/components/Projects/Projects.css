@@ -99,6 +99,7 @@
   max-width: 400px;
   display: flex;
   flex-direction: column;
+  min-height: 520px; /* ensure cards are uniform height */
 }
 
 .project-card:hover {
@@ -223,6 +224,33 @@
   line-height: 1.6;
   opacity: 0.9;
   flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* limit to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Expanded card removes clamp */
+.project-card.expanded .project-description,
+.project-description.expanded {
+  -webkit-line-clamp: unset;
+  display: block;
+  overflow: visible;
+}
+
+.see-more-btn {
+  margin-top: 12px;
+  align-self: flex-start;
+  background: transparent;
+  border: none;
+  color: #ff8888;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+.see-more-btn:hover {
+  text-decoration: underline;
 }
 
 

@@ -8,6 +8,16 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { fetchResumeAndProfile } from "../../services/firebaseDatabaseService";
 
+// Converts a Google Drive "share" link (e.g. .../file/d/FILE_ID/view?usp=sharing
+// or ...?id=FILE_ID) into a URL that actually works inside an <img src="">.
+// The Drive file must be shared as "Anyone with the link" for this to load.
+const toDriveImageUrl = (url) => {
+  if (!url) return "";
+  const match = url.match(/\/d\/([^/]+)/) || url.match(/[?&]id=([^&]+)/);
+  const fileId = match ? match[1] : null;
+  return fileId ? `https://lh3.googleusercontent.com/d/${fileId}` : url;
+};
+
 const Home = () => {
   const [isDownloading, setIsDownloading] = useState(false);
 
@@ -16,8 +26,10 @@ const Home = () => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   // Resume + profile picture now come from Firebase (portfolio/resumeAndProfileUrl)
-  // instead of a local file/hardcoded link. Local assets are kept only as a
-  // fallback in case the database value hasn't loaded yet or is empty.
+  // instead of a local file/hardcoded link. Both are stored as Google Drive links;
+  // the profile picture link is converted to a direct-image URL before use.
+  // Local assets are kept only as a fallback in case the database value hasn't
+  // loaded yet or is empty.
   const [resumeUrl, setResumeUrl] = useState("");
   const [profilePicUrl, setProfilePicUrl] = useState("");
 
@@ -26,7 +38,7 @@ const Home = () => {
       try {
         const data = await fetchResumeAndProfile();
         setResumeUrl(data?.resumeUrl || "");
-        setProfilePicUrl(data?.profileUrl || "");
+        setProfilePicUrl(toDriveImageUrl(data?.profileUrl));
       } catch (error) {
         console.error("Failed to load resume/profile from Firebase:", error);
       }

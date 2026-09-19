@@ -33,7 +33,7 @@
   top: 50%;
   width: 60px;
   height: 2px;
-  background: #ff4444;
+  background: var(--accent);
 }
 
 .experience-title::before {
@@ -69,9 +69,9 @@
 }
 
 .experience-card:hover {
-  border: 1px solid #ff4444;
+  border: 1px solid var(--accent);
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(255, 68, 68, 0.1);
+  box-shadow: 0 10px 30px rgba(var(--accent-rgb), 0.1);
 }
 
 .experience-header {
@@ -129,7 +129,7 @@
   content: '▸';
   position: absolute;
   left: 0;
-  color: #ff4444;
+  color: var(--accent);
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -156,7 +156,7 @@
   display: inline-block;
   width: 2px;
   height: 20px;
-  background: #ff4444;
+  background: var(--accent);
   margin-right: 8px;
 }
 

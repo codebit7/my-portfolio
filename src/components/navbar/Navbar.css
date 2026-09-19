@@ -110,13 +110,13 @@ body {
 }
 
 .mobile-menu-toggle:hover {
-  background: #64ffda1a;
+  background: rgba(var(--accent-rgb), 0.12);
 }
 
 .hamburger {
   width: 25px;
   height: 3px;
-  background: #f71735;
+  background: var(--accent);
   margin: 3px 0;
   border-radius: 3px;
   transition: all 0.3s ease;
@@ -143,7 +143,7 @@ body {
   background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border-top: 1px solid rgba(100, 255, 218, 0.2);
+  border-top: 1px solid rgba(var(--accent-rgb), 0.25);
   list-style: none;
   padding: 1rem 0;
   transform: translateY(-100%);
@@ -194,7 +194,7 @@ body {
 .mobile-menu-link.active {
   color: #ffffff;
   background: #9a9a9a1a;
-  border-left: 3px solid #f71735;
+  border-left: 3px solid var(--accent);
   padding-left: 1.8rem;
 }
 

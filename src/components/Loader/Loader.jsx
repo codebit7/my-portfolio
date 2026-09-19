@@ -4,7 +4,7 @@ import { BounceLoader } from "react-spinners";
 
 const Loader = () => (
   <div className="loader-overlay">
-  <BounceLoader color="#df2e21" />
+  <BounceLoader color="#ef4444" />
     {/* <div className="loader-text">Loading portfolio...</div> */}
   </div>
 );

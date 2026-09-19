@@ -47,7 +47,7 @@
   top: 50%;
   width: 60px;
   height: 2px;
-  background: #ff4444;
+  background: var(--accent);
 }
 
 .projects-title::before {
@@ -75,7 +75,7 @@
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
   border-radius: 2px;
 }
 
@@ -103,9 +103,9 @@
 }
 
 .project-card:hover {
-  border: 1px solid #ff4444;
+  border: 1px solid var(--accent);
   transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(255, 68, 68, 0.1);
+  box-shadow: 0 15px 35px rgba(var(--accent-rgb), 0.1);
 }
 
 .project-image-container {
@@ -185,15 +185,15 @@
 }
 
 .demo-btn {
-  background: linear-gradient(135deg, #ff4444, #ff6b6b);
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
   color: #ffffff;
-  border-color: #ff4444;
+  border-color: var(--accent);
 }
 
 .demo-btn:hover {
-  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+  background: linear-gradient(135deg, var(--accent-light), var(--accent-lighter));
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
+  box-shadow: 0 8px 25px rgba(var(--accent-rgb), 0.4);
 }
 
 .github-icon,
@@ -244,7 +244,7 @@
   align-self: flex-start;
   background: transparent;
   border: none;
-  color: #ff8888;
+  color: var(--accent-light);
   font-weight: 600;
   cursor: pointer;
   padding: 0;

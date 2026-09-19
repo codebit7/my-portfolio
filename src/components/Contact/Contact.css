@@ -47,7 +47,7 @@
           top: 50%;
           width: 60px;
           height: 2px;
-          background: #ff4444;
+          background: var(--accent);
         }
 
         .contact-title::before {
@@ -77,7 +77,7 @@
         }
 
         .contact-info-label {
-          color: #ff4444;
+          color: var(--accent);
           font-size: 1.1rem;
           font-weight: 600;
           margin-bottom: 8px;
@@ -89,7 +89,7 @@
           content: '';
           width: 4px;
           height: 20px;
-          background: #ff4444;
+          background: var(--accent);
           margin-right: 10px;
         }
 
@@ -111,7 +111,7 @@
         .social-link {
           width: 35px;
           height: 35px;
-          background: #ff4444;
+          background: var(--accent);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -124,7 +124,7 @@
 
         .social-link:hover {
           background: #ffffff;
-          color: #ff4444;
+          color: var(--accent);
           transform: translateY(-2px);
         }
 
@@ -147,7 +147,7 @@
   display: inline-block; 
   width: 2px;
   height: 30px;
-  background: #ff4444;
+  background: var(--accent);
   margin-right: 5px;
   vertical-align: middle; 
 }
@@ -184,8 +184,8 @@
 
         .form-input:focus,
         .form-textarea:focus {
-          border-color: #ff4444;
-          background: rgba(255, 68, 68, 0.1);
+          border-color: var(--accent);
+          background: rgba(var(--accent-rgb), 0.1);
         }
 
         .form-textarea {
@@ -194,7 +194,7 @@
         }
 
         .submit-btn {
-          background: #ff4444;
+          background: var(--accent);
           color: white;
           border: none;
           padding: 12px 30px;

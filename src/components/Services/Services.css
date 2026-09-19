@@ -33,7 +33,7 @@
   top: 50%;
   width: 60px;
   height: 2px;
-  background: #ff4444;
+  background: var(--accent);
 }
 
 .services-title::before {
@@ -79,12 +79,12 @@
 }
 
 .service-card.featured {
-  /* border-color: #ff4444; */
+  /* border-color: var(--accent); */
   background: #1e2d3ce6;
 }
 
 .service-card:hover {
-  border-color: #ff4444;
+  border-color: var(--accent);
 }
 
 .service-card:hover .service-icon {
@@ -94,7 +94,7 @@
 .service-icon {
   width: 90px;
   height: 90px;
-  background: #f71735;
+  background: var(--accent);
   border-radius: 50%;
   display: flex;
   align-items: center;

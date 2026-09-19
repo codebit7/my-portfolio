@@ -47,6 +47,20 @@ export const fetchServices = async () => {
   }
 };
 
+export const fetchResumeAndProfile = async () => {
+  try {
+    const resumeProfileRef = ref(database, 'portfolio/resumeAndProfileUrl');
+    const snapshot = await get(resumeProfileRef);
+    if (snapshot.exists()) {
+      return snapshot.val();
+    }
+    return { resumeUrl: '', profileUrl: '' };
+  } catch (error) {
+    console.error('Error fetching resume and profile:', error);
+    throw error;
+  }
+};
+
 export const fetchProjects = async () => {
   try {
     const projectsRef = ref(database, 'portfolio/projects');

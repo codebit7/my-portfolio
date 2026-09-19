@@ -1,3 +1,39 @@
+:root {
+  --accent: #ef4444;
+  --accent-rgb: 239, 68, 68;
+  --accent-dark: #dc2626;
+  --accent-light: #f87171;
+  --accent-lighter: #fca5a5;
+
+  --bg-primary: #031421;
+
+  --font-heading: 'Space Grotesk', 'Inter', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+body, p, a, span, input, textarea, button, li {
+  font-family: var(--font-body);
 }

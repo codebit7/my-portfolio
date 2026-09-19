@@ -6,16 +6,33 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { fetchResumeAndProfile } from "../../services/firebaseDatabaseService";
 
 const Home = () => {
   const [isDownloading, setIsDownloading] = useState(false);
-  
+
   const [currentTypeIndex, setCurrentTypeIndex] = useState(0);
   const [currentText, setCurrentText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
- 
-  const url = "https://drive.google.com/file/d/1jXk3j1ipOiQvW6fiS2C_HEUrXLhsmiFM/view?usp=sharing";
+  // Resume + profile picture now come from Firebase (portfolio/resumeAndProfileUrl)
+  // instead of a local file/hardcoded link. Local assets are kept only as a
+  // fallback in case the database value hasn't loaded yet or is empty.
+  const [resumeUrl, setResumeUrl] = useState("");
+  const [profilePicUrl, setProfilePicUrl] = useState("");
+
+  useEffect(() => {
+    const loadResumeAndProfile = async () => {
+      try {
+        const data = await fetchResumeAndProfile();
+        setResumeUrl(data?.resumeUrl || "");
+        setProfilePicUrl(data?.profileUrl || "");
+      } catch (error) {
+        console.error("Failed to load resume/profile from Firebase:", error);
+      }
+    };
+    loadResumeAndProfile();
+  }, []);
 
   const typingTexts = [
     "Software Engineer",
@@ -62,11 +79,16 @@ const Home = () => {
 
   
   const handleDownload = async () => {
+    if (!resumeUrl) {
+      toast.error("Resume isn't available right now. Please try again shortly!");
+      return;
+    }
+
     try {
       setIsDownloading(true);
 
       const link = document.createElement("a");
-      link.href = url;
+      link.href = resumeUrl;
       link.setAttribute("download", "Wamiq_Rahim_Resume.pdf");
       document.body.appendChild(link);
       link.click();
@@ -129,7 +151,7 @@ const Home = () => {
               <div className="inner-shape" data-aos="flip-up" data-aos-delay="400">
                 <img 
                   className="p-image" 
-                  src={profileImage} 
+                  src={profilePicUrl || profileImage} 
                   alt="profile image" 
                   data-aos="fade-up" 
                   data-aos-delay="600" 

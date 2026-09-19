@@ -35,7 +35,7 @@
   font-size: 20px;
   font-weight: 600;
   margin-bottom: 10px;
-  border-left: 3px solid #e71d36;
+  border-left: 3px solid var(--accent);
   padding-left: 8px;
 }
 
@@ -77,7 +77,7 @@
 .step-number {
   width: 40px;
   height: 40px;
-  background: #e71d36;
+  background: var(--accent);
   color: #fff;
   display: flex;
   align-items: center;

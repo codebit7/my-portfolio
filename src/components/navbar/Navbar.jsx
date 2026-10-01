@@ -1,132 +1,110 @@
 import React, { useState, useEffect, useRef } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import './Navbar.css'; 
+import { LuCode2, LuMenu, LuX } from 'react-icons/lu';
+import './Navbar.css';
+
+// Defined outside the component so it isn't re-created on every render.
+const NAV_LINKS = [
+  { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
+  { name: 'Services', href: '#services' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Contact', href: '#contact' },
+];
 
 const Navbar = () => {
-
-  const navLinks = [
-    { name: 'HOME', href: '#home' },
-    { name: 'ABOUT US', href: '#about' },
-    { name: 'SERVICES', href: '#services' },
-    { name: 'EXPERIENCE', href: '#experience' },
-    { name: 'PROJECTS', href: '#projects' },
-    { name: 'CONTACT', href: '#contact' }
-  ];
-
-
+  const [activeLink, setActiveLink] = useState('Home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const scrollActiveAllowed = useRef(true);
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: 'ease-in-out',
-    });
-
-    const handleScrollActive = () => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 24);
       if (!scrollActiveAllowed.current) return;
-      const sections = navLinks.map(link => document.querySelector(link.href));
-      let found = false;
-      for (let i = 0; i < sections.length; i++) {
-        const section = sections[i];
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= 80 && rect.bottom > 80) {
-            setActiveLink(navLinks[i].name);
-            found = true;
-            break;
-          }
+
+      let current = NAV_LINKS[0].name;
+      for (const link of NAV_LINKS) {
+        const section = document.querySelector(link.href);
+        if (!section) continue;
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 140 && rect.bottom > 140) {
+          current = link.name;
+          break;
         }
       }
-      if (!found) setActiveLink(navLinks[0].name);
+      setActiveLink(current);
     };
-    window.addEventListener('scroll', handleScrollActive);
-    return () => window.removeEventListener('scroll', handleScrollActive);
-  }, [navLinks]);
-  const [activeLink, setActiveLink] = useState('HOME');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-
-
-
-  
-
-  const handleLinkClick = (linkName) => {
+  const handleLinkClick = (e, linkName) => {
+    e.preventDefault();
     setActiveLink(linkName);
     setIsMobileMenuOpen(false);
     scrollActiveAllowed.current = false;
-    const linkObj = navLinks.find(l => l.name === linkName);
-    if (linkObj) {
-      const section = document.querySelector(linkObj.href);
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        
-        setTimeout(() => {
-          scrollActiveAllowed.current = true;
-        }, 700); 
-      } else {
-        scrollActiveAllowed.current = true;
-      }
+
+    const link = NAV_LINKS.find((l) => l.name === linkName);
+    const section = link && document.querySelector(link.href);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => { scrollActiveAllowed.current = true; }, 800);
     } else {
       scrollActiveAllowed.current = true;
     }
   };
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
   return (
-    <>
-    
-      <nav className="navbar container">
-        <div className="navbar-container">
-         
-          <div className="navbar-logo" data-aos="fade-right" data-aos-delay="100">
-            <h2>Portfolio</h2>
-          </div>
+    <header className={`navbar-wrap ${scrolled ? 'scrolled' : ''}`}>
+      <nav className="navbar" aria-label="Main navigation">
+        <a href="#home" className="navbar-logo" onClick={(e) => handleLinkClick(e, 'Home')}>
+          <span className="logo-mark"><LuCode2 /></span>
+          <span className="logo-text">Wamiq Rahim</span>
+        </a>
 
-         
-          <ul className="navbar-menu">
-            {navLinks.map((link, idx) => (
-              <li key={link.name} className="navbar-item" data-aos="fade-down" data-aos-delay={200 + idx * 100}>
-                <a
-                  href={link.href}
-                  className={`navbar-link ${activeLink === link.name ? 'active' : ''}`}
-                  onClick={() => handleLinkClick(link.name)}
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+        <ul className="navbar-menu">
+          {NAV_LINKS.map((link) => (
+            <li key={link.name}>
+              <a
+                href={link.href}
+                className={`navbar-link ${activeLink === link.name ? 'active' : ''}`}
+                aria-current={activeLink === link.name ? 'page' : undefined}
+                onClick={(e) => handleLinkClick(e, link.name)}
+              >
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
 
-          
-          <div className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`} onClick={toggleMobileMenu}>
-            <span className="hamburger"></span>
-            <span className="hamburger"></span>
-            <span className="hamburger"></span>
-          </div>
-
-         
-          <ul className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}> 
-            {navLinks.map((link, idx) => (
-              <li key={link.name} className="mobile-menu-item" data-aos="fade-up" data-aos-delay={200 + idx * 100}>
-                <a
-                  href={link.href}
-                  className={`mobile-menu-link ${activeLink === link.name ? 'active' : ''}`}
-                  onClick={() => handleLinkClick(link.name)}
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <button
+          type="button"
+          className="mobile-menu-toggle"
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMobileMenuOpen}
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+        >
+          {isMobileMenuOpen ? <LuX /> : <LuMenu />}
+        </button>
       </nav>
-    </>
+
+      <ul className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+        {NAV_LINKS.map((link) => (
+          <li key={link.name}>
+            <a
+              href={link.href}
+              className={`mobile-menu-link ${activeLink === link.name ? 'active' : ''}`}
+              onClick={(e) => handleLinkClick(e, link.name)}
+            >
+              {link.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </header>
   );
 };
 

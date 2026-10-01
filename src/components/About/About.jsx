@@ -1,59 +1,102 @@
 import React, { useEffect, useState } from "react";
 import "./About.css";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import { LuLayers, LuWrench, LuListChecks } from "react-icons/lu";
 import { fetchAbout } from '../../services/firebaseDatabaseService';
+import { getTechIcon } from "./techIcons";
 
 const About = () => {
   const [aboutData, setAboutData] = useState([]);
+
   useEffect(() => {
-    AOS.init({
-      duration: 1200,
-      once: true,
-      easing: 'ease-in-out',
-    });
     const loadData = async () => {
-      const data = await fetchAbout();
-      setAboutData(data);
-      console.log(data);
+      try {
+        const data = await fetchAbout();
+        setAboutData(data);
+      } catch (error) {
+        console.error("Failed to load about data:", error);
+      }
     };
     loadData();
   }, []);
+
+  // Firebase returns the about node as an ordered list:
+  // [0] bio paragraphs, [1] technologies, [2] tools, [3] work process
+  const bio = aboutData[0];
+  const technologies = aboutData[1];
+  const tools = aboutData[2];
+  const process = aboutData[3];
+
   return (
-    <section className="about-section" id="about">
-      <h1 className="about-bg-text">ABOUT</h1>
-      <div className="about-container container">
-        <div className="about-block" data-aos="fade-right" data-aos-delay="100">
-          <h3 className="about-title">About Me</h3>
-          <p className="about-description">{aboutData[0]?.paragraphs[0]}</p>
-          <p className="about-description">{aboutData[0]?.paragraphs[1]}</p>
+    <section className="section section--alt about" id="about">
+      <div className="container">
+        <div className="section-head" data-aos="fade-up">
+          <h2 className="section-title">About me</h2>
+          <p className="section-sub">A bit about who I am and how I like to work.</p>
         </div>
-        <div className="about-block" data-aos="fade-left" data-aos-delay="200">
-          <h3 className="about-title">{aboutData[2]?.title}</h3>
-          <div className="tag-list">
-            {aboutData[2]?.items?.map((tool, idx) => (
-              <span className="tag" key={tool} data-aos="zoom-in" data-aos-delay={300 + idx * 50}>{tool}</span>
-            ))}
+
+        <div className="about-top">
+          <div className="about-bio" data-aos="fade-up">
+            <p className="about-lead">{bio?.paragraphs?.[0]}</p>
+            <p className="about-text">{bio?.paragraphs?.[1]}</p>
           </div>
+
+          {tools?.items?.length > 0 && (
+            <aside className="panel" data-aos="fade-up" data-aos-delay="100">
+              <h3 className="panel-title">
+                <span className="icon-tile"><LuWrench /></span>
+                {tools.title}
+              </h3>
+              <ul className="tool-list">
+                {tools.items.map((tool) => {
+                  const Icon = getTechIcon(tool);
+                  return (
+                    <li className="tool-item" key={tool}>
+                      <Icon />
+                      <span>{tool}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </aside>
+          )}
         </div>
-        <div className="about-block" data-aos="fade-up" data-aos-delay="300">
-          <h3 className="about-title">{aboutData[1]?.title}</h3>
-          <div className="tag-list">
-            {aboutData[1]?.items?.map((tech, idx) => (
-              <span className="tag" key={tech} data-aos="zoom-in" data-aos-delay={350 + idx * 50}>{tech}</span>
-            ))}
+
+        {technologies?.items?.length > 0 && (
+          <div className="about-block" data-aos="fade-up">
+            <h3 className="panel-title">
+              <span className="icon-tile"><LuLayers /></span>
+              {technologies.title}
+            </h3>
+            <ul className="tech-grid">
+              {technologies.items.map((tech) => {
+                const Icon = getTechIcon(tech);
+                return (
+                  <li className="tech-chip" key={tech}>
+                    <Icon />
+                    <span>{tech}</span>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-        </div>
-        <div className="about-block" data-aos="fade-up" data-aos-delay="400">
-          <h3 className="about-title">{aboutData[3]?.title}</h3>
-          <div className="work-process">
-            {aboutData[3]?.steps?.map((step, idx) => (
-              <div className="process-step" key={step} data-aos="flip-up" data-aos-delay={450 + idx * 100}>
-                <span className="step-number">#{`0${idx + 1}`}</span>{step}
-              </div>
-            ))}
+        )}
+
+        {process?.steps?.length > 0 && (
+          <div className="about-block" data-aos="fade-up">
+            <h3 className="panel-title">
+              <span className="icon-tile"><LuListChecks /></span>
+              {process.title}
+            </h3>
+            <ol className="process">
+              {process.steps.map((step, idx) => (
+                <li className="process-step" key={step}>
+                  <span className="step-number">{String(idx + 1).padStart(2, "0")}</span>
+                  <span className="step-name">{step}</span>
+                </li>
+              ))}
+            </ol>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

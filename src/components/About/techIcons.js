@@ -1,5 +1,5 @@
-import { LuCode2, LuSmartphone } from 'react-icons/lu';
-import { TbApi } from 'react-icons/tb';
+// import {LuSmartphone } from 'react-icons/lu';
+// import { TbApi } from 'react-icons/tb';
 import {
   SiHtml5, SiCss3, SiBootstrap, SiReact, SiRedux, SiNodedotjs, SiExpress,
   SiMongodb, SiFirebase, SiGit, SiGithub, SiJsonwebtokens, SiMysql, SiJavascript,
@@ -9,7 +9,9 @@ import {
   SiPython, SiRedis, SiPostgresql, SiMongoose, SiVercel, SiNetlify, SiSass,
 } from 'react-icons/si';
 
-
+import { LuCode2, LuSmartphone, LuShieldCheck, LuLock, LuBrain, LuTerminal } from 'react-icons/lu';
+import { TbApi, TbBrandReactNative } from 'react-icons/tb';
+import { SiPrisma, SiSupabase, SiOpenai, SiExpo, SiRailway } from 'react-icons/si';
 import { BiLogoRedux } from "react-icons/bi";
 // Keys are the technology / tool name lower-cased with spaces and dots removed.
 const ICONS = {
@@ -57,9 +59,23 @@ const ICONS = {
   vercel: SiVercel,
   netlify: SiNetlify,
   sass: SiSass,
+  javascriptes6: SiJavascript,
+  reactnative: TbBrandReactNative,
+  reduxtoolkit: SiRedux,
+  restfulapis: TbApi,
+  authenticationauthorization: LuShieldCheck,
+  rowlevelsecurityrls: LuLock,
+  prisma: SiPrisma,
+  supabase: SiSupabase,
+  whisperai: SiOpenai,
+  naturallanguageprocessingnlp: LuBrain,
+  expo: SiExpo,
+  firebaseconsole: SiFirebase,
+  railway: SiRailway,
+  claudecode: LuTerminal,
 };
 
 export const getTechIcon = (name = '') => {
-  const key = String(name).toLowerCase().replace(/[\s.\-_]/g, '');
+  const key = String(name).toLowerCase().replace(/[^a-z0-9]/g, '');
   return ICONS[key] || LuCode2;
 };

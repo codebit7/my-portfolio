@@ -4,6 +4,24 @@ import { LuLayers, LuWrench, LuListChecks } from "react-icons/lu";
 import { fetchAbout } from '../../services/firebaseDatabaseService';
 import { getTechIcon } from "./techIcons";
 
+
+// Words/phrases that get highlighted in your primary color
+const HIGHLIGHTS = [
+   'MERN stack', 'Next.js', 'applied AI', 'Computer Science',
+
+];
+
+const escapeRegex = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const HIGHLIGHT_REGEX = new RegExp(
+  `(${[...HIGHLIGHTS].sort((a, b) => b.length - a.length).map(escapeRegex).join('|')})`,
+  'gi'
+);
+
+const highlight = (text = '') =>
+  text.split(HIGHLIGHT_REGEX).map((part, i) =>
+    i % 2 === 1 ? <span className="hl" key={i}>{part}</span> : part
+  );
+
 const About = () => {
   const [aboutData, setAboutData] = useState([]);
 
@@ -11,7 +29,13 @@ const About = () => {
     const loadData = async () => {
       try {
         const data = await fetchAbout();
-        setAboutData(data);
+        setAboutData(
+  (data || []).map((block) => ({
+    ...block,
+    items: block?.items?.filter(Boolean),
+    steps: block?.steps?.filter(Boolean),
+  }))
+);
       } catch (error) {
         console.error("Failed to load about data:", error);
       }
@@ -36,8 +60,8 @@ const About = () => {
 
         <div className="about-top">
           <div className="about-bio" data-aos="fade-up">
-            <p className="about-lead">{bio?.paragraphs?.[0]}</p>
-            <p className="about-text">{bio?.paragraphs?.[1]}</p>
+            <p className="about-lead">{highlight(bio?.paragraphs?.[0])}</p>
+<p className="about-text">{highlight(bio?.paragraphs?.[1])}</p>
           </div>
 
           {tools?.items?.length > 0 && (

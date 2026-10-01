@@ -64,7 +64,7 @@ const Projects = () => {
             return (
               <article
                 key={idx}
-                className={`project-card ${isOpen ? 'expanded' : ''}`}
+               className="project-card"
                 data-aos="fade-up"
                 data-aos-delay={(idx % 3) * 100}
               >
